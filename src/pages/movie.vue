@@ -6,9 +6,10 @@ const router=useRoute();
 
 const {id} = router.params;
 
-const {movie, getMovie} = useAPI();
+const {movie, getMovie, quotes, getQuotes} = useAPI();
 
 getMovie(id);
+getQuotes(id);
 </script>
 
 <template>
@@ -21,4 +22,7 @@ getMovie(id);
         <p>Score: {{ movie.rottenTomatoesScore }}</p>
     </div>
     <div v-else>Loading...</div>
+    <div class="mt-8">
+        <p class="bg-white px-4 py-6 my-4 italic rounded-lg text-center text-lg" v-for="quote in quotes" :key="quote._id">{{quote.dialog}}</p>
+    </div>
 </template>
